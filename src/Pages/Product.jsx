@@ -10,8 +10,6 @@ const Product = () => {
   const { allproduct } = useContext(ShopContext);
   const { productId } = useParams();
   
-  // console.log("Product ID:", productId);
-  // console.log("All Products:", all_products);
   
   const product = allproduct?.find((e) => e.id === Number(productId));
 
