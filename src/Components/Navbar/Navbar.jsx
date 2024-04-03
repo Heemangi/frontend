@@ -7,9 +7,11 @@ import './Navbar.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { ShopContext } from '../../Context/ShopContext';
 import debounce from 'lodash/debounce'; // Import lodash debounce function
+import all_products from "../Assets/all_products"
+
 
 const Navbar = () => {
-    const { allproduct, getTotalCartItems } = useContext(ShopContext);
+    const { getTotalCartItems } = useContext(ShopContext);
     const [menu, setMenu] = useState("Sarees");
     const [searchQuery, setSearchQuery] = useState('');
     const [searchResults, setSearchResults] = useState([]);
@@ -20,12 +22,12 @@ const Navbar = () => {
         if (searchQuery.trim() === '') {
             setSuggestions([]);
         } else {
-            const suggestions = allproduct.filter(product =>
+            const suggestions = all_products.filter(product =>
                 product.name.toLowerCase().includes(searchQuery.toLowerCase())
             ).slice(0, 5); // Limit suggestions to first 5
             setSuggestions(suggestions);
         }
-    }, [searchQuery, allproduct]);
+    }, [searchQuery, all_products]);
 
     const debouncedSearch = debounce((query) => {
         // Redirect to search results page with search query as URL parameter

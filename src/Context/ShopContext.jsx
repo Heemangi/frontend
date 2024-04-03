@@ -1,4 +1,5 @@
 import React, { createContext, useState, useEffect } from "react";
+import all_products from "../Components/Assets/all_products";
 
 export const ShopContext = createContext(null);
 
@@ -73,7 +74,7 @@ const ShopContextProvider = (props) => {
         let totalAmount = 0;
         for (const item in cartItems) {
             if (cartItems[item] > 0) {
-                let itemInfo = allproduct.find((product) => product.id === Number(item))
+                let itemInfo = all_products.find((product) => product.id === Number(item))
                 totalAmount += itemInfo.price * cartItems[item];
             }
         }
