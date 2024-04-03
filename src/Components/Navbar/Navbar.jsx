@@ -1,31 +1,31 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import logo from '../Assets/logo_transparent.png';
 import cart from "../Assets/shopping-bag-icon.png";
 import './Navbar.css';
 import { Link, useNavigate } from 'react-router-dom';
+import all_products from "../Assets/all_products";
 import { ShopContext } from '../../Context/ShopContext';
 import debounce from 'lodash/debounce'; // Import lodash debounce function
-import all_products from "../Assets/all_products"
-
 
 const Navbar = () => {
     const { getTotalCartItems } = useContext(ShopContext);
     const [menu, setMenu] = useState("Sarees");
     const [searchQuery, setSearchQuery] = useState('');
-    const [searchResults, setSearchResults] = useState([]);
     const [suggestions, setSuggestions] = useState([]);
+    const [showSuggestions, setShowSuggestions] = useState(false); // State to manage the visibility of suggestions
     const navigate = useNavigate(); // Initialize the navigate function for redirection
+    const authToken = localStorage.getItem('auth-token'); // Get the auth token from localStorage
 
     useEffect(() => {
         if (searchQuery.trim() === '') {
             setSuggestions([]);
         } else {
-            const suggestions = all_products.filter(product =>
+            const results = all_products.filter(product =>
                 product.name.toLowerCase().includes(searchQuery.toLowerCase())
-            ).slice(0, 5); // Limit suggestions to first 5
-            setSuggestions(suggestions);
+            );
+            setSuggestions(results);
         }
     }, [searchQuery, all_products]);
 
@@ -43,8 +43,8 @@ const Navbar = () => {
     const handleKeyPress = (event) => {
         if (event.key === 'Enter') {
             handleSearch();
-            // Clear suggestions when Enter key is pressed
-            setSuggestions([]);
+            setSearchQuery(''); // Clear search query
+            setShowSuggestions(false); // Collapse suggestions when Enter key is pressed
         }
     }
 
@@ -53,6 +53,19 @@ const Navbar = () => {
         navigate(`/search?q=${searchQuery}`);
     }
 
+    const handleProductClick = (productId) => {
+        navigate(`/product/${productId}`); // Navigate to individual product display page
+        setShowSuggestions(false); // Hide suggestions when clicking on a product card
+    }
+
+    const handleSearchBoxClick = () => {
+        setShowSuggestions((prevState) => !prevState); // Toggle the showSuggestions state
+    }
+
+    const handleLogout = () => {
+        localStorage.removeItem('auth-token');
+        window.location.replace('/');
+    };
 
     return (
         <div className='navbar'>
@@ -79,29 +92,35 @@ const Navbar = () => {
                 </ul>
             </div>
 
+            
             <div className="search-container">
                 <input type="text" placeholder="Search" className="search-bar" 
-                       value={searchQuery} onChange={handleSearchChange} onKeyPress={handleKeyPress} />
+                       value={searchQuery} onChange={handleSearchChange} onKeyPress={handleKeyPress} 
+                       onClick={handleSearchBoxClick} // Show suggestions when clicking on search box
+                />
                 <FontAwesomeIcon icon={faSearch} className='search-icon' onClick={handleSearch} />
-                <div className="suggestions">
-                    {suggestions.length > 0 && (
-                        <ul>
-                            {suggestions.map((suggestion, index) => (
-                                <li key={index} onClick={() => setSearchQuery(suggestion.name)}>{suggestion.name}</li>
-                            ))}
+                <div className={`suggestions ${showSuggestions && searchQuery.trim() !== '' ? 'show' : 'hide'}`}>
+    {suggestions.length > 0 && (
+        <ul>
+            {suggestions.map((suggestion, index) => (
+                <li key={index} onClick={() => handleProductClick(suggestion.id)}>
+                    {suggestion.name}
+                </li>
+            ))}
                         </ul>
                     )}
                 </div>
             </div>
 
             <div className="navright">
-                {localStorage.getItem('auth-token') ? (
-                    <button className='logout-button' onClick={() => {
-                        localStorage.removeItem('auth-token');
-                        window.location.replace('/')
-                    }}>Log Out</button>
+                {authToken ? (
+                    <button className='logout-button' onClick={handleLogout}>
+                        Log Out
+                    </button>
                 ) : (
-                    <Link to='/login'><button className='login-button'>Log In</button></Link>
+                    <Link to='/login'>
+                        <button className='login-button'>Log In</button>
+                    </Link>
                 )}
                 <Link to="/cart"> 
                     <img src={cart} alt="Cart" className='cart-icon'/>

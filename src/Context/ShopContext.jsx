@@ -17,11 +17,10 @@ const ShopContextProvider = (props) => {
     const [searchResults, setSearchResults] = useState([]);
 
     useEffect(() => {
-        fetch('https://backend-sarisway.onrender.com/allproducts')
-        .then((response) => response.json())
-        .then((data) => setAllProduct(data));
+        setAllProduct(all_products); // Set all products from local file
 
         if (localStorage.getItem('auth-token')) {
+            // Fetch cart items from backend if user is logged in
             fetch('https://backend-sarisway.onrender.com/getcart', {
                 method: 'POST',
                 headers: {
@@ -39,6 +38,7 @@ const ShopContextProvider = (props) => {
     const addToCart = (itemId) => {
         setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
         if (localStorage.getItem('auth-token')) {
+            // Add item to cart on backend if user is logged in
             fetch('https://backend-sarisway.onrender.com/addtocart', {
                 method: 'POST',
                 headers: {
@@ -56,6 +56,7 @@ const ShopContextProvider = (props) => {
     const removeFromCart = (itemId) => {
         setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
         if (localStorage.getItem('auth-token')) {
+            // Remove item from cart on backend if user is logged in
             fetch('https://backend-sarisway.onrender.com/removefromcart', {
                 method: 'POST',
                 headers: {
@@ -74,7 +75,7 @@ const ShopContextProvider = (props) => {
         let totalAmount = 0;
         for (const item in cartItems) {
             if (cartItems[item] > 0) {
-                let itemInfo = all_products.find((product) => product.id === Number(item))
+                let itemInfo = allproduct.find((product) => product.id === Number(item))
                 totalAmount += itemInfo.price * cartItems[item];
             }
         }
@@ -92,10 +93,11 @@ const ShopContextProvider = (props) => {
     };
 
     const searchProducts = (query) => {
-        fetch(`https://backend-sarisway.onrender.com/search?q=${query}`)
-            .then((response) => response.json())
-            .then((data) => setSearchResults(data))
-            .catch((error) => console.error('Error searching products:', error));
+        // Perform search in local all_products array
+        const results = allproduct.filter(product =>
+            product.name.toLowerCase().includes(query.toLowerCase())
+        );
+        setSearchResults(results);
     };
 
     const contextValue = {
