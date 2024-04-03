@@ -16,9 +16,9 @@ const ShopCategory = (props) => {
             Showing 1-12
           </span> out of 36 products */}
         </p>
-        <div className='shopcategory-sort'>
+        {/* <div className='shopcategory-sort'>
           Sort by <img src={drop} alt=""/>
-        </div>
+        </div> */}
       </div>
       <div className='shopcategory-products'>
         {all_products?.map((item,i) => {
