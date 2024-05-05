@@ -47,3 +47,50 @@
     margin-bottom: 5px; /* Add some space between name and price */
   }
   
+  @media (max-width: 768px) {
+    .carousel {
+      display: none; /* Hide the carousel on smaller screens */
+    }
+  
+    /* Adjust padding for popular section */
+    .popular {
+      padding-top: 20px; /* Decrease top padding for smaller screens */
+      width: 85%;
+    }
+  
+    /* Adjust font size and padding for popular heading */
+    .popular h1 {
+      padding-top: 40px; /* Decrease top padding for smaller screens */
+      font-size: 20px; /* Decrease font size for smaller screens */
+    }
+  
+    /* Adjust margin bottom for popular hr */
+    .popular hr {
+      margin-bottom: 10px; /* Decrease bottom margin for smaller screens */
+    }
+  
+    /* Adjust item width for popular items */
+    .item {
+      width: calc(50% - 20px); /* Set width to 50% minus the gap space */
+    }
+  
+    /* Adjust font size for item name and price */
+    .item .name,
+    .item .price {
+      font-size: 14px; /* Decrease font size for smaller screens */
+    }
+  }
+  
+  @media screen and (min-width: 768px) and (max-width: 992px) {
+    /* Adjust item width for medium screens */
+    .item {
+      width: calc(33.333% - 20px); /* Set width to 33.333% minus the gap space */
+    }
+    .popular h1{
+      align-items: center;
+      margin-right: 140px;
+    }
+    
+
+  }
+  

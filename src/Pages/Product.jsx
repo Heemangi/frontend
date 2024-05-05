@@ -5,15 +5,15 @@ import Breadcrum from '../Components/Breadcrum/Breadcrum.jsx';
 import ProductDisplay from '../Components/ProductDisplay/ProductDisplay.jsx';
 import DescriptionBox from '../Components/DescriptionBox/DescriptionBox.jsx';
 import RelatedProducts from '../Components/RelatedProducts/RelatedProducts.jsx';
-import all_products from "../Components/Assets/all_products.js"
-
 
 const Product = () => {
-  // const { allproduct } = useContext(ShopContext);
+  const { allproduct } = useContext(ShopContext);
   const { productId } = useParams();
   
+  // console.log("Product ID:", productId);
+  // console.log("All Products:", all_products);
   
-  const product = all_products?.find((e) => e.id === Number(productId));
+  const product = allproduct?.find((e) => e.id === Number(productId));
 
   return (
     <div>

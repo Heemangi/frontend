@@ -55,3 +55,25 @@
     cursor: pointer;
 }
 
+@media screen and (max-width: 768px) {
+    .newsletter h1{
+        font-size: 22px;
+    }
+
+    .newsletter p{
+        font-size: 18px;
+    }
+
+    .newsletter input {
+        width: 60%; /* Adjust input width for smaller screens */
+    }
+
+    .newsletter div {
+        width: 80%; /* Adjust container width for smaller screens */
+    }
+
+    .newsletter div button {
+        width: 60%; /* Adjust button width for smaller screens */
+        font-size: 12px; /* Further decrease font size for smaller screens */
+    }
+}

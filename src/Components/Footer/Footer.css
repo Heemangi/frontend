@@ -4,6 +4,8 @@
     justify-content: center;
     align-items: center;
     /* gap: 10px; Adjust the gap between elements */
+    height: 200px; /* Set a fixed height for the footer */
+    margin-top: auto; /* Align footer to the bottom of the page */
 }
 
 .footer-logo {
@@ -13,6 +15,7 @@
 }
 
 .footer-logo img {
+    margin-top: 170px;
     width: 200px;
     height: 200px;
 }
@@ -70,4 +73,32 @@
     border-radius: 10px;
     height: 3px;
     background: #c7c7c7;
+}
+
+@media screen and (max-width: 768px) {
+    .footer {
+        /* Adjust height, padding, or margins as needed */
+        height: auto; /* Set height to auto for smaller screens */
+        padding: 20px;
+    }
+
+    .footer-logo img {
+        width: 150px; /* Reduce logo size for smaller screens */
+        height: 150px;
+    }
+
+    .footer-links {
+        /* gap: 30px; Adjust gap between links */
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-right: 30px;
+        gap: 20px;
+    }
+
+    .footer-links li {
+        font-size: 16px; /* Reduce font size for links */
+    }
+
+    /* Additional adjustments for other elements as needed */
 }

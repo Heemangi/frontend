@@ -16,7 +16,7 @@ const LoginSignup = () => {
     const login = async () => {
         console.log("Login executed", formData);
         let responseData;
-        await fetch('https://backend-sarisway.onrender.com/login', {
+        await fetch('/login', {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
@@ -36,7 +36,7 @@ const LoginSignup = () => {
     const signup = async () => {
         console.log("Signup executed", formData);
         let responseData;
-        await fetch('https://backend-sarisway.onrender.com/signup', {
+        await fetch('/signup', {
             method: 'POST',
             headers: {
                 Accept: 'application/json',

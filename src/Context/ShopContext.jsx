@@ -21,7 +21,7 @@ const ShopContextProvider = (props) => {
 
         if (localStorage.getItem('auth-token')) {
             // Fetch cart items from backend if user is logged in
-            fetch('https://backend-sarisway.onrender.com/getcart', {
+            fetch('/getcart', {
                 method: 'POST',
                 headers: {
                     Accept: 'application/form-data',
@@ -39,7 +39,7 @@ const ShopContextProvider = (props) => {
         setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
         if (localStorage.getItem('auth-token')) {
             // Add item to cart on backend if user is logged in
-            fetch('https://backend-sarisway.onrender.com/addtocart', {
+            fetch('/addtocart', {
                 method: 'POST',
                 headers: {
                     Accept: 'application/form-data',
@@ -57,7 +57,7 @@ const ShopContextProvider = (props) => {
         setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
         if (localStorage.getItem('auth-token')) {
             // Remove item from cart on backend if user is logged in
-            fetch('https://backend-sarisway.onrender.com/removefromcart', {
+            fetch('/removefromcart', {
                 method: 'POST',
                 headers: {
                     Accept: 'application/form-data',

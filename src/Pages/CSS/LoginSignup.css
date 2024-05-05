@@ -55,3 +55,31 @@
     font-weight: 600;
     cursor: pointer;
 }
+
+@media screen and (max-width: 768px) {
+    .loginsignup-container {
+        width: 80%;
+        padding: 20px;
+    }
+
+    .loginsignup-container button {
+        width: 100%;
+    }
+
+    .loginsignup-fields input {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .loginsignup-fields input {
+        height: 56px;
+        font-size: 16px;
+    }
+
+    .loginsignup-container button {
+        height: 56px;
+        font-size: 20px;
+        width: 96%;
+    }
+}

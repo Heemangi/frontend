@@ -2,10 +2,9 @@ import React, { useContext } from 'react';
 import "./CartItems.css";
 import { ShopContext } from '../../Context/ShopContext';
 import delete_icon from "../Assets/delete_icon.jpeg";
-import all_products from "../Assets/all_products"
 
 const CartItems = () => {
-    const {getTotalCartAmount , cartItems, removeFromCart } = useContext(ShopContext);
+    const {getTotalCartAmount ,allproduct, cartItems, removeFromCart } = useContext(ShopContext);
 
     // console.log("All Products:", all_products);
     // console.log("Cart Items:", cartItems);
@@ -21,7 +20,7 @@ const CartItems = () => {
                 <p>Remove</p>
             </div>
             <hr/>
-            {all_products.map((e) => {
+            {allproduct.map((e) => {
                 console.log(e.id)
                 if (cartItems[e.id] > 0) {
                     return <div>

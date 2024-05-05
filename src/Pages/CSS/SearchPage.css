@@ -48,4 +48,42 @@
     color: #333; /* Adjust the color of the name and price */
     margin-bottom: 5px; /* Add some space between name and price */
   }
+  @media (max-width: 768px) {
+    /* Adjust padding for search results section */
+    .search-results {
+      padding-top: 100px; /* Decrease top padding for smaller screens */
+      flex-direction: column; /* Change flex direction to column */
+      align-items: center; /* Center items along the cross axis */
+    }
+  
+    /* Adjust font size and padding for search results heading */
+    .search-results h1 {
+      padding-top: 40px; /* Decrease top padding for smaller screens */
+      font-size: 16px; /* Decrease font size for smaller screens */
+    }
+  
+    /* Adjust margin bottom for search results hr */
+    .search-results hr {
+      margin-bottom: 10px; /* Decrease bottom margin for smaller screens */
+    }
+  
+    /* Adjust item width for search results */
+    .result {
+      width: 100%; /* Set width to 100% */
+      padding: 20px; /* Adjust padding for better spacing */
+      box-sizing: border-box; /* Include padding in width calculation */
+    }
+  
+    /* Adjust font size for result name and price */
+    .result-name,
+    .result-price {
+      font-size: 16px; /* Decrease font size for smaller screens */
+    }
+
+    .result-image{
+      width: 80%;
+    }
+  }
+  
+ 
   

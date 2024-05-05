@@ -1,13 +1,9 @@
 import React from 'react'
 import "./RelatedProducts.css"
+import all_products from '../Assets/all_products'
 import Item from '../Item/Item'
-import { useContext } from 'react'
-import { ShopContext } from '../../Context/ShopContext'
-import all_products from "../Assets/all_products"
-
 
 const RelatedProducts = () => {
-  // const {allproduct} = useContext(ShopContext);
   return (
     <div className='relatedproducts'>
         <h1>Related Products</h1>
@@ -21,4 +17,4 @@ const RelatedProducts = () => {
   )
 }
 
-export default RelatedProducts;
+export default RelatedProducts

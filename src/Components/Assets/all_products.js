@@ -15,7 +15,7 @@ import img13 from "./13.jpg"
 import img14 from "./14.jpg"
 import img15 from "./15.jpg"
 import img16 from "./16.jpg"
-// import img17 from "./17.jpg"
+import img17 from "./17.jpg"
 
 const all_products = [
     {
@@ -130,13 +130,13 @@ const all_products = [
         category:"partywear",
         price: 12999,
     },
-    // {
-    //     id: 17,
-    //     name: "Zari Saree in Banarasi Silk Partywear",
-    //     image: img17,
-    //     category:"partywear",
-    //     price: 19999,
-    // },
+    {
+        id: 17,
+        name: "Zari Saree in Banarasi Silk Partywear",
+        image: img17,
+        category:"partywear",
+        price: 19999,
+    },
 
 ];
 

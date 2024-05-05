@@ -1,12 +1,12 @@
-.descriptionbox{
+.descriptionbox {
     margin: 120px 170px;
 }
 
-.descriptionbox-navigator{
+.descriptionbox-navigator {
     display: flex;
 }
 
-.descriptionbox-nav-box{
+.descriptionbox-nav-box {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -17,12 +17,12 @@
     border: 1px solid #d0d0d0;
 }
 
-.descriptionbox-nav-box.fade{
+.descriptionbox-nav-box.fade {
     background: #FBFBFB;
     color: #555;
 }
 
-.descriptionbox-description{
+.descriptionbox-description {
     display: flex;
     flex-direction: column;
     gap: 25px;
@@ -31,3 +31,8 @@
     padding-bottom: 70px;
 }
 
+@media (max-width: 768px) {
+    .descriptionbox {
+        display: none; /* Hide description box on mobile screens */
+    }
+}

@@ -54,6 +54,12 @@
   font-size: 30px;
 }
 
+@media (max-width: 768px) {
+  .carousel {
+    display: none; /* Hide the carousel on smaller screens */
+  }
+}
+
 /* .carousel_arrow_left,
 .carousel_arrow_right {
   position: absolute;

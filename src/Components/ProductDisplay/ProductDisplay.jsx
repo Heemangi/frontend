@@ -6,10 +6,12 @@ const ProductDisplay = (props) => {
     const { product } = props;
     const { addToCart } = useContext(ShopContext);
     const [selectedSize, setSelectedSize] = useState('');
+    const [isAdded, setIsAdded] = useState(false);
 
     const handleAddToCart = () => {
         if (selectedSize) {
             addToCart(product.id, selectedSize);
+            setIsAdded(true); // Set isAdded to true when item is added to cart
         } else {
             alert('Please select a size before adding to cart');
         }
@@ -46,7 +48,7 @@ const ProductDisplay = (props) => {
                         <div className={selectedSize === 'XXL' ? 'selected-size' : ''} onClick={() => setSelectedSize('XXL')}>XXL</div>
                     </div>
                 </div>
-                <button onClick={handleAddToCart}>ADD TO CART</button>
+                <button onClick={handleAddToCart}>{isAdded ? 'ADDED' : 'ADD TO CART'}</button>
                 <p className='productdisplay-right-category'><span>Category : </span>{product.category}</p>
             </div>
         </div>
